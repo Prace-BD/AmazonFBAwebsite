@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html
+    - export DEPLOYPATH=/home/yllexfbh/public_html
     - /bin/cp -R * $DEPLOYPATH
     - /bin/cp .htaccess $DEPLOYPATH/ 2>/dev/null || true
     - /bin/chmod -R 775 $DEPLOYPATH/storage $DEPLOYPATH/bootstrap/cache 2>/dev/null || true

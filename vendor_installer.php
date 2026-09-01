@@ -24,9 +24,48 @@ putenv("COMPOSER_NO_INTERACTION=1");
 $_SERVER['HOME'] = $baseDir;
 $_SERVER['COMPOSER_HOME'] = $composerHome;
 
-// Wipe stale bootstrap cache files to ensure fresh .env reading
+// Wipe stale bootstrap cache files
 foreach (glob(__DIR__ . '/bootstrap/cache/*.php') as $cacheFile) {
     @unlink($cacheFile);
+}
+
+$envPath = __DIR__ . '/.env';
+$envExamplePath = __DIR__ . '/.env.example';
+
+// Process Database Config Update Form
+$message = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'save_db') {
+    $dbConn = trim($_POST['db_connection'] ?? 'mysql');
+    $dbHost = trim($_POST['db_host'] ?? '127.0.0.1');
+    $dbPort = trim($_POST['db_port'] ?? '3306');
+    $dbName = trim($_POST['db_database'] ?? 'yllexfbh_user_yllegacy');
+    $dbUser = trim($_POST['db_username'] ?? 'yllexfbh_yllegacy786');
+    $dbPass = trim($_POST['db_password'] ?? '');
+
+    $newEnv = "APP_NAME=\"YL Legacy\"\n";
+    $newEnv .= "APP_ENV=production\n";
+    $newEnv .= "APP_KEY=base64:" . base64_encode(random_bytes(32)) . "\n";
+    $newEnv .= "APP_DEBUG=false\n";
+    $newEnv .= "APP_URL=https://yllegacy.com\n\n";
+    
+    if ($dbConn === 'mysql') {
+        $newEnv .= "DB_CONNECTION=mysql\n";
+        $newEnv .= "DB_HOST={$dbHost}\n";
+        $newEnv .= "DB_PORT={$dbPort}\n";
+        $newEnv .= "DB_DATABASE={$dbName}\n";
+        $newEnv .= "DB_USERNAME={$dbUser}\n";
+        $newEnv .= "DB_PASSWORD=\"{$dbPass}\"\n\n";
+    } else {
+        $newEnv .= "DB_CONNECTION=sqlite\n";
+        $newEnv .= "DB_DATABASE=" . __DIR__ . "/database/database.sqlite\n\n";
+    }
+    
+    $newEnv .= "SESSION_DRIVER=file\n";
+    $newEnv .= "CACHE_STORE=file\n";
+    $newEnv .= "QUEUE_CONNECTION=sync\n";
+
+    file_put_contents($envPath, $newEnv);
+    $message = "✅ Database configuration updated in .env!";
 }
 
 ?>
@@ -41,21 +80,65 @@ foreach (glob(__DIR__ . '/bootstrap/cache/*.php') as $cacheFile) {
         .container { max-width: 800px; margin: 0 auto; background: #1e293b; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         h1 { color: #f88902; margin-top: 0; }
         pre { background: #090d16; color: #38bdf8; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 14px; max-height: 400px; }
-        .btn { display: inline-block; background: #f88902; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 15px; }
+        .btn { display: inline-block; background: #f88902; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 15px; border: none; cursor: pointer; }
         .btn-green { background: #16a34a; }
         .status-ok { color: #4ade80; font-weight: bold; }
         .status-err { color: #f87171; font-weight: bold; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #cbd5e1; font-weight: 600; }
+        input[type="text"], input[type="password"], select { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box; }
+        .box { background: #0f172a; padding: 20px; border-radius: 8px; margin-bottom: 25px; border: 1px solid #334155; }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>⚡ YL Legacy Deployment & Vendor Setup</h1>
+    <h1>⚡ YL Legacy Deployment & Database Setup</h1>
     
+    <?php if ($message): ?>
+        <p class="status-ok"><?= htmlspecialchars($message) ?></p>
+    <?php endif; ?>
+
+    <!-- MySQL Database Credentials Setup Form -->
+    <div class="box">
+        <h3>🗄️ Configure MySQL Database Credentials</h3>
+        <form method="POST" action="">
+            <input type="hidden" name="action" value="save_db">
+            
+            <div class="form-group">
+                <label>Database Type:</label>
+                <select name="db_connection">
+                    <option value="mysql" selected>MySQL (Recommended for cPanel)</option>
+                    <option value="sqlite">SQLite (Zero configuration file)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>MySQL Database Name:</label>
+                <input type="text" name="db_database" value="yllexfbh_user_yllegacy" required>
+            </div>
+
+            <div class="form-group">
+                <label>MySQL Username:</label>
+                <input type="text" name="db_username" value="yllexfbh_yllegacy786" required>
+            </div>
+
+            <div class="form-group">
+                <label>MySQL Password (Created in cPanel Wizard):</label>
+                <input type="password" name="db_password" placeholder="Enter password for yllexfbh_yllegacy786" required>
+            </div>
+
+            <div class="form-group">
+                <label>Host:</label>
+                <input type="text" name="db_host" value="127.0.0.1" required>
+            </div>
+
+            <button type="submit" class="btn btn-green">Save Database & Run Migration →</button>
+        </form>
+    </div>
+
     <?php
     // Step 1: Environment Setup (.env)
     echo "<h3>1. Application Environment Configuration</h3>";
-    $envPath = __DIR__ . '/.env';
-    $envExamplePath = __DIR__ . '/.env.example';
 
     if (!file_exists($envPath)) {
         if (file_exists($envExamplePath)) {

@@ -9,8 +9,20 @@ ini_set('memory_limit', '512M');
 error_reporting(E_ALL);
 set_time_limit(600);
 
-putenv('COMPOSER_ALLOW_SUPERUSER=1');
-putenv('COMPOSER_NO_INTERACTION=1');
+$baseDir = __DIR__;
+$composerHome = $baseDir . '/.composer';
+
+if (!file_exists($composerHome)) {
+    @mkdir($composerHome, 0777, true);
+}
+
+putenv("HOME=$baseDir");
+putenv("COMPOSER_HOME=$composerHome");
+putenv("COMPOSER_ALLOW_SUPERUSER=1");
+putenv("COMPOSER_NO_INTERACTION=1");
+
+$_SERVER['HOME'] = $baseDir;
+$_SERVER['COMPOSER_HOME'] = $composerHome;
 
 ?>
 <!DOCTYPE html>
@@ -45,7 +57,6 @@ putenv('COMPOSER_NO_INTERACTION=1');
             copy($envExamplePath, $envPath);
             echo "<p class='status-ok'>✅ Created <code>.env</code> file from <code>.env.example</code>.</p>";
         } else {
-            // Embedded default .env template
             $defaultEnv = "APP_NAME=\"YL Legacy\"\nAPP_ENV=production\nAPP_KEY=\nAPP_DEBUG=false\nAPP_URL=https://yllegacy.com\n\nDB_CONNECTION=sqlite\nDB_DATABASE=" . __DIR__ . "/database/database.sqlite\n\nSESSION_DRIVER=file\nCACHE_STORE=file\nQUEUE_CONNECTION=sync\n";
             file_put_contents($envPath, $defaultEnv);
             echo "<p class='status-ok'>✅ Created standard <code>.env</code> file.</p>";
@@ -85,7 +96,7 @@ putenv('COMPOSER_NO_INTERACTION=1');
         echo "<p class='status-ok'>🎉 <code>vendor/autoload.php</code> is installed and ready!</p>";
         echo "<a href='/deploy/install?secret=yllegacy2026' class='btn btn-green'>Proceed to Database Migration & Setup →</a>";
     } else {
-        echo "<p>⏳ <code>vendor/</code> directory not found. Attempting web-based composer installation...</p>";
+        echo "<p>⏳ <code>vendor/</code> directory not found. Running Composer installation...</p>";
 
         $pharPath = __DIR__ . '/composer.phar';
         if (!file_exists($pharPath)) {
@@ -100,32 +111,29 @@ putenv('COMPOSER_NO_INTERACTION=1');
         }
 
         if (file_exists($pharPath)) {
-            echo "<p>Running Composer installation (with <code>register_argc_argv=0</code> bypass)...</p>";
+            echo "<p>Executing Composer with explicit HOME environment...</p>";
             
-            $phpBin = PHP_BINARY ? PHP_BINARY : 'php';
-            // -d register_argc_argv=0 bypasses the non-CLI SAPI check in Composer
-            $cmd = escapeshellcmd($phpBin) . ' -d register_argc_argv=0 ' . escapeshellarg($pharPath) . ' install --no-dev --optimize-autoloader 2>&1';
+            // Build bash prefix to set environment variables for sub-process
+            $envPrefix = "export HOME=" . escapeshellarg($baseDir) . "; export COMPOSER_HOME=" . escapeshellarg($composerHome) . "; ";
             
-            $output = [];
-            $returnCode = -1;
-            @exec($cmd, $output, $returnCode);
+            // Try binaries in order: /usr/local/bin/php, /usr/bin/php, PHP_BINARY
+            $phpBinaries = ['/usr/local/bin/php', '/usr/bin/php', PHP_BINARY];
+            $installed = false;
 
-            echo "<pre>" . htmlspecialchars(implode("\n", $output)) . "</pre>";
-
-            if (file_exists($vendorAutoload)) {
-                echo "<h3 class='status-ok'>🎉 Composer Installation Successful!</h3>";
-                echo "<a href='/deploy/install?secret=yllegacy2026' class='btn btn-green'>Proceed to Database Migration & Setup →</a>";
-            } else {
-                echo "<p class='status-err'>⚠️ Automated composer execution finished with code $returnCode.</p>";
-                echo "<p>Retrying using alternative CLI PHP binary...</p>";
+            foreach ($phpBinaries as $bin) {
+                if ($installed) break;
                 
-                // Fallback attempt with system php CLI path
-                $altCmd = '/usr/local/bin/php -d register_argc_argv=0 ' . escapeshellarg($pharPath) . ' install --no-dev --optimize-autoloader 2>&1';
-                $altOutput = [];
-                @exec($altCmd, $altOutput, $altReturn);
-                echo "<pre>" . htmlspecialchars(implode("\n", $altOutput)) . "</pre>";
+                $cmd = $envPrefix . escapeshellcmd($bin) . ' ' . escapeshellarg($pharPath) . ' install --no-dev --optimize-autoloader 2>&1';
+                
+                $output = [];
+                $returnCode = -1;
+                @exec($cmd, $output, $returnCode);
+
+                echo "<p>Running: <code>" . htmlspecialchars($cmd) . "</code></p>";
+                echo "<pre>" . htmlspecialchars(implode("\n", $output)) . "</pre>";
 
                 if (file_exists($vendorAutoload)) {
+                    $installed = true;
                     echo "<h3 class='status-ok'>🎉 Composer Installation Successful!</h3>";
                     echo "<a href='/deploy/install?secret=yllegacy2026' class='btn btn-green'>Proceed to Database Migration & Setup →</a>";
                 }

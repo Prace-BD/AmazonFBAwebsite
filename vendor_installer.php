@@ -24,6 +24,11 @@ putenv("COMPOSER_NO_INTERACTION=1");
 $_SERVER['HOME'] = $baseDir;
 $_SERVER['COMPOSER_HOME'] = $composerHome;
 
+// Wipe stale bootstrap cache files to ensure fresh .env reading
+foreach (glob(__DIR__ . '/bootstrap/cache/*.php') as $cacheFile) {
+    @unlink($cacheFile);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +80,7 @@ $_SERVER['COMPOSER_HOME'] = $composerHome;
 
     // Generate APP_KEY if missing
     $envContent = file_exists($envPath) ? file_get_contents($envPath) : '';
-    if (!preg_match('/APP_KEY=base64:[A-Za-z0-9+\/=]+/', $envContent)) {
+    if (!preg_match('/APP_KEY=base64:[A-Za-z0-9+\/=]+/', $envContent) || strpos($envContent, 'APP_KEY=') === false || trim(explode('APP_KEY=', $envContent)[1] ?? '') === '') {
         $key = 'base64:' . base64_encode(random_bytes(32));
         if (strpos($envContent, 'APP_KEY=') !== false) {
             $envContent = preg_replace('/APP_KEY=.*/', 'APP_KEY=' . $key, $envContent);
@@ -102,15 +107,23 @@ $_SERVER['COMPOSER_HOME'] = $composerHome;
             
             $kernel = $app->make(\Illuminate\Contracts\Console\Kernel::class);
             $kernel->bootstrap();
+
+            \Illuminate\Support\Facades\Artisan::call('key:generate', ['--force' => true]);
+            $keyOut = \Illuminate\Support\Facades\Artisan::output();
             
             \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
             $migOut = \Illuminate\Support\Facades\Artisan::output();
             
             \Illuminate\Support\Facades\Artisan::call('optimize:clear');
             $optOut = \Illuminate\Support\Facades\Artisan::output();
+
+            // Clear cache files once more
+            foreach (glob(__DIR__ . '/bootstrap/cache/*.php') as $cacheFile) {
+                @unlink($cacheFile);
+            }
             
-            echo "<h3 class='status-ok'>✅ Database Migration & Seed Complete!</h3>";
-            echo "<pre style='background:#090d16;color:#4ade80;padding:15px;border-radius:8px;'>" . htmlspecialchars($migOut) . "\n" . htmlspecialchars($optOut) . "</pre>";
+            echo "<h3 class='status-ok'>✅ Database Migration & Key Generation Complete!</h3>";
+            echo "<pre style='background:#090d16;color:#4ade80;padding:15px;border-radius:8px;'>" . htmlspecialchars($keyOut) . "\n" . htmlspecialchars($migOut) . "\n" . htmlspecialchars($optOut) . "</pre>";
             echo "<p><a href='/admin' class='btn btn-green'>Go to Admin Control Center →</a></p>";
             echo "<p><a href='/' class='btn' style='background:#0284c7;margin-left:10px;'>Visit Website Homepage →</a></p>";
         } catch (\Throwable $e) {

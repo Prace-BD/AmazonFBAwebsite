@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug')->unique();
+            $table->string('slug', 191)->unique();
             $table->string('category')->default('Business Advice');
             $table->string('read_time')->default('5 min read');
             $table->text('excerpt')->nullable();

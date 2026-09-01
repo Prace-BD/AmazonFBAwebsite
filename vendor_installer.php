@@ -89,12 +89,30 @@ $_SERVER['COMPOSER_HOME'] = $composerHome;
     }
 
     // Step 2: Check Vendor Directory
-    echo "<h3>2. Composer Dependencies (<code>vendor/</code>)</h3>";
+    echo "<h3>2. Composer Dependencies & Database Migration</h3>";
     $vendorAutoload = __DIR__ . '/vendor/autoload.php';
 
     if (file_exists($vendorAutoload)) {
         echo "<p class='status-ok'>🎉 <code>vendor/autoload.php</code> is installed and ready!</p>";
-        echo "<a href='/deploy/install?secret=yllegacy2026' class='btn btn-green'>Proceed to Database Migration & Setup →</a>";
+        
+        // Boot Laravel Framework to execute migrations & seeders safely
+        try {
+            require_once $vendorAutoload;
+            $app = require_once __DIR__ . '/bootstrap/app.php';
+            
+            \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
+            $migOut = \Illuminate\Support\Facades\Artisan::output();
+            
+            \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+            $optOut = \Illuminate\Support\Facades\Artisan::output();
+            
+            echo "<h3 class='status-ok'>✅ Database Migration & Seed Complete!</h3>";
+            echo "<pre style='background:#090d16;color:#4ade80;padding:15px;border-radius:8px;'>" . htmlspecialchars($migOut) . "\n" . htmlspecialchars($optOut) . "</pre>";
+            echo "<p><a href='/admin' class='btn btn-green'>Go to Admin Control Center →</a></p>";
+            echo "<p><a href='/' class='btn' style='background:#0284c7;margin-left:10px;'>Visit Website Homepage →</a></p>";
+        } catch (\Throwable $e) {
+            echo "<p class='status-err'>Database Migration Error: " . htmlspecialchars($e->getMessage()) . "</p>";
+        }
     } else {
         echo "<p>⏳ <code>vendor/</code> directory not found. Running Composer installation...</p>";
 
@@ -113,10 +131,7 @@ $_SERVER['COMPOSER_HOME'] = $composerHome;
         if (file_exists($pharPath)) {
             echo "<p>Executing Composer with explicit HOME environment...</p>";
             
-            // Build bash prefix to set environment variables for sub-process
             $envPrefix = "export HOME=" . escapeshellarg($baseDir) . "; export COMPOSER_HOME=" . escapeshellarg($composerHome) . "; ";
-            
-            // Try binaries in order: /usr/local/bin/php, /usr/bin/php, PHP_BINARY
             $phpBinaries = ['/usr/local/bin/php', '/usr/bin/php', PHP_BINARY];
             $installed = false;
 
@@ -134,8 +149,8 @@ $_SERVER['COMPOSER_HOME'] = $composerHome;
 
                 if (file_exists($vendorAutoload)) {
                     $installed = true;
-                    echo "<h3 class='status-ok'>🎉 Composer Installation Successful!</h3>";
-                    echo "<a href='/deploy/install?secret=yllegacy2026' class='btn btn-green'>Proceed to Database Migration & Setup →</a>";
+                    echo "<h3 class='status-ok'>🎉 Composer Installation Successful! Refreshing page to migrate database...</h3>";
+                    echo "<script>setTimeout(function(){ window.location.reload(); }, 2000);</script>";
                 }
             }
         }

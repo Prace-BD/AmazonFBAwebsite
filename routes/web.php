@@ -87,4 +87,11 @@ Route::get('/deploy/install', function (\Illuminate\Http\Request $request) {
     } catch (\Throwable $e) {
         return response("<h2>❌ Setup Error:</h2><pre style='background:#fee2e2;color:#991b1b;padding:20px;border-radius:8px;'>" . htmlspecialchars($e->getMessage()) . "\n\n" . htmlspecialchars($e->getTraceAsString()) . "</pre>", 500);
     }
-});
+})->withoutMiddleware([
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Illuminate\Cookie\Middleware\EncryptCookies::class,
+    \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class
+]);
+

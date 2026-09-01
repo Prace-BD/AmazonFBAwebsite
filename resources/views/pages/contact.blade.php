@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us - ' . \App\Models\SiteSetting::get('site_name', 'OYL Legacy'))
+@section('title', 'Contact Us - ' . \App\Models\SiteSetting::get('site_name', 'YL Legacy'))
 
 @section('content')
 <section class="section-padding" style="background: radial-gradient(circle at top right, rgba(248, 137, 2, 0.08), transparent 60%), #ffffff;">
@@ -15,7 +15,7 @@
             <!-- Contact Details Card -->
             <div style="background: var(--surface-alt); border: 1px solid var(--border-color); border-radius: var(--card-radius); padding: 36px; box-shadow: var(--shadow-sm);">
                 <h3 style="font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 20px;">
-                    👋 Contact OYL Legacy
+                    👋 Contact YL Legacy
                 </h3>
                 <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px;">
                     Need assistance regarding store onboarding, dedicated account directors, or compliance verification? Contact our support team.
@@ -37,7 +37,7 @@
                     </div>
                     <div>
                         <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Email Inquiries</div>
-                        <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}" style="font-size: 15px; font-weight: 600; color: var(--accent);">{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}</a>
+                        <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}" style="font-size: 15px; font-weight: 600; color: var(--accent);">{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}</a>
                     </div>
                 </div>
 

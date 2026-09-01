@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', \App\Models\SiteSetting::get('site_name', 'OYL Legacy') . ' - ' . \App\Models\SiteSetting::get('site_tagline', 'Turnkey E-Commerce Operations & Dedicated Account Management'))</title>
-    <meta name="description" content="@yield('meta_description', 'OYL Legacy provides turnkey e-commerce store operations, dedicated account directors, and institutional growth across Amazon FBA, Walmart, eBay, TikTok Shop, and Shopify.')">
+    <title>@yield('title', \App\Models\SiteSetting::get('site_name', 'YL Legacy') . ' - ' . \App\Models\SiteSetting::get('site_tagline', 'Turnkey E-Commerce Operations & Dedicated Account Management'))</title>
+    <meta name="description" content="@yield('meta_description', 'YL Legacy provides turnkey e-commerce store operations, dedicated account directors, and institutional growth across Amazon FBA, Walmart, eBay, TikTok Shop, and Shopify.')">
     
     <!-- Dynamic Favicon -->
     @if(\App\Models\SiteSetting::get('site_favicon_url'))
@@ -50,9 +50,9 @@
                         <i class="fa-solid fa-phone"></i>
                         <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</span>
                     </a>
-                    <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}" class="topbar-link">
+                    <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}" class="topbar-link">
                         <i class="fa-solid fa-envelope"></i>
-                        <span>{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}</span>
+                        <span>{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}</span>
                     </a>
                 </div>
             </div>
@@ -66,10 +66,10 @@
                 <!-- Brand Logo -->
                 <a href="{{ route('home') }}" class="brand-logo">
                     @if(\App\Models\SiteSetting::get('site_logo_url'))
-                        <img src="{{ \App\Models\SiteSetting::get('site_logo_url') }}" alt="{{ \App\Models\SiteSetting::get('site_name', 'OYL Legacy') }}" height="38">
+                        <img src="{{ \App\Models\SiteSetting::get('site_logo_url') }}" alt="{{ \App\Models\SiteSetting::get('site_name', 'YL Legacy') }}" height="38">
                     @else
                         <div class="brand-logo-icon"><i class="fa-solid fa-bolt"></i></div>
-                        <div>OYL<span>Legacy</span><span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">.com</span></div>
+                        <div>YL<span>Legacy</span><span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">.com</span></div>
                     @endif
                 </a>
 
@@ -174,7 +174,7 @@
         @yield('content')
     </main>
 
-    <!-- FOOTER (PERSISTS ON ALL PAGES - COMPLIANT WITH WEBSITE READINESS STANDARDS) -->
+    <!-- FOOTER (PERSISTS ON ALL PAGES) -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
@@ -182,10 +182,10 @@
                 <div class="footer-col">
                     <div class="brand-logo" style="color: #ffffff; margin-bottom: 16px;">
                         <div class="brand-logo-icon"><i class="fa-solid fa-bolt"></i></div>
-                        <div>OYL<span>Legacy</span><span style="font-size: 13px; color: #94a3b8;">.com</span></div>
+                        <div>YL<span>Legacy</span><span style="font-size: 13px; color: #94a3b8;">.com</span></div>
                     </div>
                     <p style="color: #94a3b8; font-size: 13.5px; line-height: 1.6; margin-bottom: 20px;">
-                        {{ \App\Models\SiteSetting::get('footer_about_text', 'OYL Legacy is a premier turnkey e-commerce operations and dedicated account management agency providing store scaling across Amazon FBA, Walmart WFS, eBay, and Shopify.') }}
+                        {{ \App\Models\SiteSetting::get('footer_about_text', 'YL Legacy is a premier turnkey e-commerce operations and dedicated account management agency providing store scaling across Amazon FBA, Walmart WFS, eBay, and Shopify.') }}
                     </p>
                     <div class="footer-social-links">
                         @if(\App\Models\SiteSetting::get('social_facebook'))
@@ -229,7 +229,9 @@
                         <li><a href="{{ route('refund-policy') }}">Refund & Cancellation Policy</a></li>
                         <li><a href="{{ route('fulfillment-policy') }}">Fulfillment & Delivery Policy</a></li>
                         <li><a href="{{ route('sitemap') }}">HTML Sitemap</a></li>
-                        <li><a href="{{ route('admin.theme-control') }}" style="color: var(--primary); font-weight: 600;"><i class="fa-solid fa-sliders" style="margin-right: 5px;"></i> Unified Theme Center</a></li>
+                        @auth
+                            <li><a href="{{ route('admin.theme-control') }}" style="color: var(--primary); font-weight: 600;"><i class="fa-solid fa-sliders" style="margin-right: 5px;"></i> Unified Theme Center</a></li>
+                        @endauth
                     </ul>
                 </div>
 
@@ -238,7 +240,7 @@
                     <h4>Contact Support</h4>
                     <div class="footer-contact-item">
                         <i class="fa-solid fa-building"></i>
-                        <span>OYL Legacy LLC</span>
+                        <span>YL Legacy LLC</span>
                     </div>
                     <div class="footer-contact-item">
                         <i class="fa-solid fa-location-dot"></i>
@@ -250,7 +252,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fa-solid fa-envelope"></i>
-                        <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}">{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}</a>
+                        <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}">{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}</a>
                     </div>
                     <div class="footer-contact-item">
                         <i class="fa-solid fa-clock"></i>
@@ -262,7 +264,7 @@
             <!-- Footer Bottom Bar -->
             <div class="footer-bottom">
                 <div>
-                    {{ \App\Models\SiteSetting::get('footer_copyright', '© ' . date('Y') . ' OYL Legacy LLC. All rights reserved.') }}
+                    {{ \App\Models\SiteSetting::get('footer_copyright', '© ' . date('Y') . ' YL Legacy LLC. All rights reserved.') }}
                 </div>
                 <div class="footer-policy-links">
                     <a href="{{ route('privacy') }}">Privacy Policy</a>
@@ -270,6 +272,9 @@
                     <a href="{{ route('refund-policy') }}">Refund Policy</a>
                     <a href="{{ route('fulfillment-policy') }}">Fulfillment Policy</a>
                     <a href="{{ route('sitemap') }}">Sitemap</a>
+                    @auth
+                        <a href="{{ route('admin.theme-control') }}" style="color: var(--primary);"><i class="fa-solid fa-lock"></i> Admin Panel</a>
+                    @endauth
                 </div>
             </div>
         </div>
@@ -281,7 +286,7 @@
         <div class="mobile-drawer-header">
             <div class="brand-logo">
                 <div class="brand-logo-icon"><i class="fa-solid fa-bolt"></i></div>
-                <div>OYL<span>Legacy</span><span style="font-size:12px; color:var(--text-muted);">.com</span></div>
+                <div>YL<span>Legacy</span><span style="font-size:12px; color:var(--text-muted);">.com</span></div>
             </div>
             <button id="closeDrawer" style="background:none; border:none; font-size:22px; cursor:pointer;"><i class="fa-solid fa-xmark"></i></button>
         </div>
@@ -301,7 +306,9 @@
             <a href="{{ route('fulfillment-policy') }}" class="mobile-nav-link">Fulfillment Policy</a>
             <a href="{{ route('contact') }}" class="mobile-nav-link">Contact Us</a>
             <a href="{{ route('blog.index') }}" class="mobile-nav-link">Blog & Insights</a>
-            <a href="{{ route('admin.theme-control') }}" class="mobile-nav-link" style="color: var(--primary);"><i class="fa-solid fa-sliders"></i> Unified Theme Center</a>
+            @auth
+                <a href="{{ route('admin.theme-control') }}" class="mobile-nav-link" style="color: var(--primary);"><i class="fa-solid fa-sliders"></i> Unified Theme Center</a>
+            @endauth
         </div>
         <div style="margin-top: auto;">
             <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">

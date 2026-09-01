@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Gateway Login - ' . \App\Models\SiteSetting::get('site_name', 'OYL Legacy'))
+@section('title', 'Admin Gateway Login - ' . \App\Models\SiteSetting::get('site_name', 'YL Legacy'))
 
 @section('content')
 <section class="section-padding" style="min-height: 75vh; display: flex; align-items: center; background: radial-gradient(circle at center, rgba(248, 137, 2, 0.08), transparent 70%), var(--surface-alt);">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="badge badge-primary" style="margin-bottom: 10px;">Security Gateway</div>
                 <h2 style="font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 6px;">Admin Control Center</h2>
-                <p style="font-size: 13.5px; color: var(--text-muted);">Enter your database credentials to access OYL Legacy settings.</p>
+                <p style="font-size: 13.5px; color: var(--text-muted);">Enter your database credentials to access YL Legacy settings.</p>
             </div>
 
             @if(session('error'))
@@ -36,10 +36,10 @@
                 <div class="form-group">
                     <label class="form-label" style="display: flex; justify-content: space-between;">
                         <span>Admin Email</span>
-                        <span style="font-size: 11px; color: var(--text-muted);">Default: admin@oyllegacy.com</span>
+                        <span style="font-size: 11px; color: var(--text-muted);">Default: admin@yllegacy.com</span>
                     </label>
                     <div style="position: relative;">
-                        <input type="email" name="email" class="form-control" value="{{ old('email', 'admin@oyllegacy.com') }}" required style="padding-left: 38px;">
+                        <input type="email" name="email" class="form-control" value="{{ old('email', 'admin@yllegacy.com') }}" required style="padding-left: 38px;">
                         <i class="fa-solid fa-envelope" style="position: absolute; left: 14px; top: 14px; color: var(--text-muted); font-size: 14px;"></i>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
 
             <div style="text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-color); font-size: 12.5px; color: var(--text-muted);">
                 <i class="fa-solid fa-shield-halved" style="color: var(--primary); margin-right: 4px;"></i>
-                Protected by OYL Legacy Authentication System
+                Protected by YL Legacy Authentication System
             </div>
         </div>
     </div>

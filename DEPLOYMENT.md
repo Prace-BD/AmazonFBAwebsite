@@ -1,6 +1,6 @@
 # Windows Laragon Deployment & Setup Guide
 
-This guide details how to deploy and run the **OYL Legacy** Laravel e-commerce platform on Windows using **Laragon**.
+This guide details how to deploy and run the **YL Legacy** Laravel e-commerce platform on Windows using **Laragon**.
 
 ---
 
@@ -93,10 +93,28 @@ The admin panel is protected behind a database-synced authentication gateway:
 | Field | Value |
 |---|---|
 | **Login URL** | `http://localhost/admin/login` (or `/admin`) |
-| **Admin Email** | `admin@oyllegacy.com` |
+| **Admin Email** | `admin@yllegacy.com` |
 | **Default Password** | `admin123` |
 
 > **Updating the Password:** You can change this password at any time inside the Admin Panel under the **"Security & Password"** tab.
+
+---
+
+## ⚡ 6. Easy Laragon Terminal & Artisan Shortcuts
+
+Two Windows batch scripts are included in the project root for instant command-line access without manual PATH configuration:
+
+### 1. `terminal.bat` (Interactive Dev Terminal)
+- **How to use:** Double-click [`terminal.bat`](file:///c:/Users/Bloodtek/Documents/dev/AmazonFBAsite/terminal.bat) or run `.\terminal.bat` from CMD/PowerShell.
+- **What it does:** Automatically detects Laragon's PHP (`C:\laragon\bin\php\...`), Composer, Node.js, and Git, prepends them to your session `PATH`, and opens an interactive console in the project directory.
+
+### 2. `artisan.bat` (Direct Artisan Commands)
+- **How to use:** Run any artisan command directly without typing `php`:
+  ```cmd
+  artisan migrate:fresh --seed
+  artisan optimize:clear
+  artisan route:list
+  ```
 
 ---
 
@@ -107,12 +125,16 @@ If you ever make design, route, or configuration changes, run these quick mainte
 ```powershell
 # Clear all caches (config, routes, views, settings)
 php artisan optimize:clear
+# Or simply:
+artisan optimize:clear
 
 # Clear cached site settings
 php artisan cache:clear
 
 # Re-seed fresh database (WARNING: resets all custom data)
 php artisan migrate:fresh --seed
+# Or simply:
+artisan migrate:fresh --seed
 ```
 
 ---

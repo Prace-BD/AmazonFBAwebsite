@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Sitemap - ' . \App\Models\SiteSetting::get('site_name', 'OYL Legacy'))
+@section('title', 'Sitemap - ' . \App\Models\SiteSetting::get('site_name', 'YL Legacy'))
 
 @section('content')
 <section class="section-padding" style="background: #ffffff;">
@@ -8,7 +8,7 @@
         <div class="section-header" style="text-align: left; margin-bottom: 30px;">
             <div class="badge badge-primary">Structured Sitemap</div>
             <h2>Website Sitemap</h2>
-            <p>Overview of all public routes, services, and compliance resources on OYL Legacy.</p>
+            <p>Overview of all public routes, services, and compliance resources on YL Legacy.</p>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 36px;">
@@ -44,7 +44,9 @@
                     <li style="margin-bottom: 12px;"><a href="{{ route('refund-policy') }}" style="color: var(--text-dark); font-weight: 500;">Refund & Cancellation Policy</a></li>
                     <li style="margin-bottom: 12px;"><a href="{{ route('fulfillment-policy') }}" style="color: var(--text-dark); font-weight: 500;">Fulfillment & Delivery Policy</a></li>
                     <li style="margin-bottom: 12px;"><a href="{{ route('sitemap') }}" style="color: var(--text-dark); font-weight: 500;">HTML Sitemap</a></li>
-                    <li style="margin-bottom: 12px;"><a href="{{ route('admin.theme-control') }}" style="color: var(--primary); font-weight: 700;">Unified Theme Center</a></li>
+                    @auth
+                        <li style="margin-bottom: 12px;"><a href="{{ route('admin.theme-control') }}" style="color: var(--primary); font-weight: 700;">Unified Theme Center</a></li>
+                    @endauth
                 </ul>
             </div>
         </div>

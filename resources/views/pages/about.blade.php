@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About Us - ' . \App\Models\SiteSetting::get('site_name', 'OYL Legacy'))
+@section('title', 'About Us - ' . \App\Models\SiteSetting::get('site_name', 'YL Legacy'))
 
 @section('content')
 <!-- About Hero -->
@@ -8,7 +8,7 @@
     <div class="container">
         <div class="section-header">
             <div class="badge badge-primary">Institutional E-Commerce</div>
-            <h2>About OYL Legacy</h2>
+            <h2>About YL Legacy</h2>
             <p>Turnkey E-Commerce Operations & Dedicated Account Management</p>
         </div>
 
@@ -18,7 +18,7 @@
                     When it comes to institutional marketplace management, <span style="color: var(--primary);">we lead the standard</span>.
                 </h3>
                 <p style="font-size: 15.5px; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px;">
-                    <strong>OYL Legacy LLC</strong> is a premier e-commerce operations agency pairing investors and brand owners with dedicated, senior account managers to build, manage, and scale high-yielding digital assets across Amazon, Walmart, eBay, and Shopify.
+                    <strong>YL Legacy LLC</strong> is a premier e-commerce operations agency pairing investors and brand owners with dedicated, senior account managers to build, manage, and scale high-yielding digital assets across Amazon, Walmart, eBay, and Shopify.
                 </p>
                 <p style="font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 28px;">
                     With over a decade of industry expertise, our turnkey management model eliminates the daily friction of inventory planning, PPC bidding wars, Buy Box repricing, and marketplace compliance.
@@ -77,7 +77,7 @@
 <section class="cta-banner-section">
     <div class="container">
         <div class="cta-banner-content">
-            <h2>Ready to Scale with OYL Legacy?</h2>
+            <h2>Ready to Scale with YL Legacy?</h2>
             <p>Connect with our leadership team today to review your store potential and receive a customized growth roadmap.</p>
             <a href="{{ route('consultation') }}" class="btn btn-primary btn-lg">
                 <span>Request Strategic Consultation</span>

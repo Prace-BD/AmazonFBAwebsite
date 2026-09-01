@@ -31,7 +31,7 @@ class AdminAuthController extends Controller
         ]);
 
         $password = $request->input('password');
-        $email = $request->input('email', 'admin@oyllegacy.com');
+        $email = $request->input('email', 'admin@yllegacy.com');
 
         // Check if an admin user exists
         $user = User::where('email', $email)->first() ?? User::first();
@@ -39,8 +39,8 @@ class AdminAuthController extends Controller
         if (!$user) {
             // Create default admin user if none exists
             $user = User::create([
-                'name' => 'OYL Legacy Administrator',
-                'email' => 'admin@oyllegacy.com',
+                'name' => 'YL Legacy Administrator',
+                'email' => 'admin@yllegacy.com',
                 'password' => Hash::make('admin123'),
                 'email_verified_at' => now(),
             ]);

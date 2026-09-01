@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Service Delivery & Fulfillment Policy - ' . \App\Models\SiteSetting::get('site_name', 'OYL Legacy'))
+@section('title', 'Service Delivery & Fulfillment Policy - ' . \App\Models\SiteSetting::get('site_name', 'YL Legacy'))
 
 @section('content')
 <section class="section-padding" style="background: #ffffff;">
@@ -8,12 +8,12 @@
         <div class="section-header" style="text-align: left; margin-bottom: 30px;">
             <div class="badge badge-primary">Fulfillment Standards</div>
             <h2>Service Delivery & Fulfillment Policy</h2>
-            <p>Last updated: {{ date('F Y') }} • Governing Entity: <strong>OYL Legacy LLC</strong></p>
+            <p>Last updated: {{ date('F Y') }} • Governing Entity: <strong>YL Legacy LLC</strong></p>
         </div>
 
         <div style="font-size: 15px; color: var(--text-muted); line-height: 1.8;">
             <p style="margin-bottom: 20px;">
-                <strong>OYL Legacy LLC</strong> provides turnkey digital services and dedicated account management. This policy outlines how and when our clients receive service onboarding, deliverables, and operational access.
+                <strong>YL Legacy LLC</strong> provides turnkey digital services and dedicated account management. This policy outlines how and when our clients receive service onboarding, deliverables, and operational access.
             </p>
 
             <h3 style="color: var(--accent); font-size: 19px; margin: 28px 0 12px;">1. Digital Service Delivery Process</h3>
@@ -74,7 +74,7 @@
 
             <h3 style="color: var(--accent); font-size: 19px; margin: 28px 0 12px;">4. Support Inquiries</h3>
             <p style="margin-bottom: 20px;">
-                For questions regarding fulfillment status or your onboarding milestones, email <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}" style="color: var(--primary); font-weight: 600;">{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}</a>.
+                For questions regarding fulfillment status or your onboarding milestones, email <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}" style="color: var(--primary); font-weight: 600;">{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}</a>.
             </p>
         </div>
     </div>

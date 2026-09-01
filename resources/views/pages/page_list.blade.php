@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Page List Directory & Sitemap - ' . \App\Models\SiteSetting::get('site_name', 'Amazon Consultant AE'))
+@section('title', 'Page List Directory & Sitemap - ' . \App\Models\SiteSetting::get('site_name', 'YL Legacy'))
 
 @section('content')
 <section class="section-padding" style="background: radial-gradient(circle at top, rgba(248, 137, 2, 0.05), transparent 70%), #ffffff;">
@@ -8,7 +8,7 @@
         <div class="section-header">
             <div class="badge badge-primary">System Index</div>
             <h2>Complete Website Page Directory</h2>
-            <p>Direct navigation access to all website templates, platform services, legal policies, and the OYL Legacy Unified Theme Control Center.</p>
+            <p>Direct navigation access to all website templates, platform services, and legal compliance policies.</p>
         </div>
 
         <div class="pages-directory-grid">

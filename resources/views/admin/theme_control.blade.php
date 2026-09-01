@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'OYL Legacy - Unified Theme Control Center')
+@section('title', 'YL Legacy - Unified Theme Control Center')
 
 @push('styles')
 <style>
@@ -151,7 +151,7 @@
         <!-- Control Center Header -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 14px;">
             <div>
-                <div class="badge badge-primary" style="margin-bottom: 6px;">OYL Legacy Admin Panel</div>
+                <div class="badge badge-primary" style="margin-bottom: 6px;">YL Legacy Admin Panel</div>
                 <h1 style="font-size: 28px; font-weight: 800; color: var(--accent);">Unified Theme Control Center</h1>
                 <p style="font-size: 14px; color: var(--text-muted);">Manage global branding, theme colors, package USD pricing, mail forwarding, and lead inquiries in real time.</p>
             </div>
@@ -341,7 +341,7 @@
                             <div class="setting-desc">Displayed on contact page and topbar</div>
                         </div>
                         <div>
-                            <input type="email" name="contact_email" value="{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}" class="form-control">
+                            <input type="email" name="contact_email" value="{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}" class="form-control">
                         </div>
                     </div>
 
@@ -479,7 +479,7 @@
                             <div class="setting-desc">Comma-separated email addresses to receive instant lead notifications</div>
                         </div>
                         <div>
-                            <input type="text" name="mail_forward_to_email" value="{{ \App\Models\SiteSetting::get('mail_forward_to_email', 'support@oyllegacy.com') }}" class="form-control" required>
+                            <input type="text" name="mail_forward_to_email" value="{{ \App\Models\SiteSetting::get('mail_forward_to_email', 'support@yllegacy.com') }}" class="form-control" required>
                         </div>
                     </div>
 
@@ -489,7 +489,7 @@
                             <div class="setting-desc">Use [service] and [name] tags for automated subject lines</div>
                         </div>
                         <div>
-                            <input type="text" name="mail_subject_template" value="{{ \App\Models\SiteSetting::get('mail_subject_template', 'New OYL Legacy Client Inquiry: [service] - [name]') }}" class="form-control">
+                            <input type="text" name="mail_subject_template" value="{{ \App\Models\SiteSetting::get('mail_subject_template', 'New YL Legacy Client Inquiry: [service] - [name]') }}" class="form-control">
                         </div>
                     </div>
 
@@ -605,13 +605,13 @@
                     <span class="badge badge-primary"><i class="fa-solid fa-database"></i> Database Synced</span>
                 </h3>
                 <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">
-                    The OYL Legacy Admin Panel is secured behind a database-synced generic password. You can change your password below at any time, which immediately updates the <code>users</code> database record.
+                    The YL Legacy Admin Panel is secured behind a database-synced generic password. You can change your password below at any time, which immediately updates the <code>users</code> database record.
                 </p>
 
                 <div style="background: var(--surface-alt); padding: 18px 22px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
                     <div>
                         <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Current Admin Identity</div>
-                        <div style="font-size: 15px; font-weight: 700; color: var(--accent);">{{ auth()->user()->email ?? 'admin@oyllegacy.com' }}</div>
+                        <div style="font-size: 15px; font-weight: 700; color: var(--accent);">{{ auth()->user()->email ?? 'admin@yllegacy.com' }}</div>
                     </div>
                     <span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Active Session</span>
                 </div>

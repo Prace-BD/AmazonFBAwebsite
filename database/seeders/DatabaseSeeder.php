@@ -12,15 +12,15 @@ use Illuminate\Support\Facades\Hash;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database with OYL Legacy compliant data.
+     * Seed the application's database with YL Legacy compliant data.
      */
     public function run(): void
     {
         // 1. Admin User
         User::updateOrCreate(
-            ['email' => 'admin@oyllegacy.com'],
+            ['email' => 'admin@yllegacy.com'],
             [
-                'name' => 'OYL Legacy Admin',
+                'name' => 'YL Legacy Admin',
                 'password' => Hash::make('admin123'),
                 'email_verified_at' => now(),
             ]
@@ -29,9 +29,9 @@ class DatabaseSeeder extends Seeder
         // 2. Global Site & Theme Settings (Unified Theme Control Center)
         $settings = [
             // Branding & Identity
-            ['key' => 'site_name', 'value' => 'OYL Legacy', 'group' => 'branding', 'type' => 'text', 'label' => 'Site Name'],
+            ['key' => 'site_name', 'value' => 'YL Legacy', 'group' => 'branding', 'type' => 'text', 'label' => 'Site Name'],
             ['key' => 'site_tagline', 'value' => 'Turnkey E-Commerce Operations & Dedicated Account Management', 'group' => 'branding', 'type' => 'text', 'label' => 'Tagline'],
-            ['key' => 'site_logo_text', 'value' => 'OYL Legacy', 'group' => 'branding', 'type' => 'text', 'label' => 'Logo Text'],
+            ['key' => 'site_logo_text', 'value' => 'YL Legacy', 'group' => 'branding', 'type' => 'text', 'label' => 'Logo Text'],
             ['key' => 'site_logo_url', 'value' => '', 'group' => 'branding', 'type' => 'text', 'label' => 'Custom Logo Image URL'],
             ['key' => 'site_favicon_url', 'value' => '', 'group' => 'branding', 'type' => 'text', 'label' => 'Favicon URL'],
             
@@ -43,13 +43,13 @@ class DatabaseSeeder extends Seeder
             ['key' => 'theme_header_bg', 'value' => '#ffffff', 'group' => 'theme', 'type' => 'color', 'label' => 'Navbar Background'],
             ['key' => 'theme_topbar_bg', 'value' => '#f8fafc', 'group' => 'theme', 'type' => 'color', 'label' => 'Topbar Background'],
             ['key' => 'theme_footer_bg', 'value' => '#0b1120', 'group' => 'theme', 'type' => 'color', 'label' => 'Footer Background'],
-            ['key' => 'theme_font_family', 'value' => "'Poppins', sans-serif", 'group' => 'theme', 'type' => 'text', 'label' => 'Main Font Family'],
+            ['key' => 'theme_font_family', 'value' => "Poppins, sans-serif", 'group' => 'theme', 'type' => 'text', 'label' => 'Main Font Family'],
             ['key' => 'theme_card_radius', 'value' => '14px', 'group' => 'theme', 'type' => 'text', 'label' => 'Card Border Radius'],
             
             // Contact & Hotline
             ['key' => 'contact_phone', 'value' => '+1 (888) 695-0199', 'group' => 'contact', 'type' => 'text', 'label' => 'Phone Hotline'],
             ['key' => 'contact_phone_raw', 'value' => '18886950199', 'group' => 'contact', 'type' => 'text', 'label' => 'Phone Dial Number'],
-            ['key' => 'contact_email', 'value' => 'support@oyllegacy.com', 'group' => 'contact', 'type' => 'text', 'label' => 'Contact Email'],
+            ['key' => 'contact_email', 'value' => 'support@yllegacy.com', 'group' => 'contact', 'type' => 'text', 'label' => 'Contact Email'],
             ['key' => 'contact_whatsapp', 'value' => '+18886950199', 'group' => 'contact', 'type' => 'text', 'label' => 'WhatsApp Number'],
             ['key' => 'contact_address', 'value' => '100 Enterprise Way, Suite 400, Wilmington, DE 19801, USA', 'group' => 'contact', 'type' => 'text', 'label' => 'Office Address'],
             ['key' => 'contact_hours', 'value' => 'Monday - Friday: 8:00 AM - 8:00 PM EST (24/7 Monitoring)', 'group' => 'contact', 'type' => 'text', 'label' => 'Working Hours'],
@@ -66,13 +66,13 @@ class DatabaseSeeder extends Seeder
             
             // Mail Forwarding System
             ['key' => 'mail_forwarding_enabled', 'value' => '1', 'group' => 'mail', 'type' => 'boolean', 'label' => 'Enable Mail Forwarding'],
-            ['key' => 'mail_forward_to_email', 'value' => 'support@oyllegacy.com, team@oyllegacy.com', 'group' => 'mail', 'type' => 'text', 'label' => 'Forward Inquiries To (Email Address)'],
+            ['key' => 'mail_forward_to_email', 'value' => 'support@yllegacy.com, team@yllegacy.com', 'group' => 'mail', 'type' => 'text', 'label' => 'Forward Inquiries To (Email Address)'],
             ['key' => 'mail_auto_reply_enabled', 'value' => '1', 'group' => 'mail', 'type' => 'boolean', 'label' => 'Send Auto-Reply Confirmation to Customer'],
-            ['key' => 'mail_subject_template', 'value' => 'New OYL Legacy Client Inquiry: [service] - [name]', 'group' => 'mail', 'type' => 'text', 'label' => 'Forwarded Email Subject Template'],
+            ['key' => 'mail_subject_template', 'value' => 'New YL Legacy Client Inquiry: [service] - [name]', 'group' => 'mail', 'type' => 'text', 'label' => 'Forwarded Email Subject Template'],
             
             // Footer & Socials
-            ['key' => 'footer_about_text', 'value' => 'OYL Legacy is a premier turnkey e-commerce operations and dedicated account management agency. We provide end-to-end store scaling across Amazon FBA, Walmart WFS, eBay, TikTok Shop, and Shopify DTC brands.', 'group' => 'footer', 'type' => 'textarea', 'label' => 'Footer About Text'],
-            ['key' => 'footer_copyright', 'value' => '© ' . date('Y') . ' OYL Legacy LLC. All rights reserved.', 'group' => 'footer', 'type' => 'text', 'label' => 'Copyright Text'],
+            ['key' => 'footer_about_text', 'value' => 'YL Legacy is a premier turnkey e-commerce operations and dedicated account management agency. We provide end-to-end store scaling across Amazon FBA, Walmart WFS, eBay, TikTok Shop, and Shopify DTC brands.', 'group' => 'footer', 'type' => 'textarea', 'label' => 'Footer About Text'],
+            ['key' => 'footer_copyright', 'value' => '© ' . date('Y') . ' YL Legacy LLC. All rights reserved.', 'group' => 'footer', 'type' => 'text', 'label' => 'Copyright Text'],
             ['key' => 'social_facebook', 'value' => 'https://facebook.com', 'group' => 'social', 'type' => 'text', 'label' => 'Facebook URL'],
             ['key' => 'social_instagram', 'value' => 'https://instagram.com', 'group' => 'social', 'type' => 'text', 'label' => 'Instagram URL'],
             ['key' => 'social_linkedin', 'value' => 'https://linkedin.com', 'group' => 'social', 'type' => 'text', 'label' => 'LinkedIn URL'],
@@ -148,7 +148,7 @@ class DatabaseSeeder extends Seeder
                 ],
                 'is_popular' => false,
                 'badge_text' => 'ENTERPRISE SUITE',
-                'cta_text' => 'Partner With OYL Legacy',
+                'cta_text' => 'Partner With YL Legacy',
                 'order' => 3,
             ],
             [
@@ -200,7 +200,7 @@ class DatabaseSeeder extends Seeder
             );
         }
 
-        // 4. Real Blog Articles (OYL Legacy Branding)
+        // 4. Real Blog Articles (YL Legacy Branding)
         $blogs = [
             [
                 'title' => 'Why Having a Dedicated Account Manager Multiplies E-Commerce Valuation',
@@ -208,8 +208,8 @@ class DatabaseSeeder extends Seeder
                 'category' => 'Account Management',
                 'read_time' => '5 min read',
                 'excerpt' => 'Discover how a dedicated account director optimizes Buy Box share, eliminates stockouts, and scales marketplace revenue sustainably.',
-                'content' => '<p>Managing an Amazon or multi-channel store requires rapid adaptation to algorithm shifts, compliance audits, PPC bidding wars, and inventory lead times. When brand owners assign a named Dedicated Account Manager, operations shift from reactive troubleshooting to proactive institutional growth.</p><h3>The Power of Single-Point Ownership</h3><p>At OYL Legacy, every client is paired with an experienced Dedicated Account Manager who oversees daily operations, PPC architecture, and inventory forecasting. This structure ensures clear accountability, weekly strategic milestones, and rapid issue resolution.</p><ul><li>Consistent Buy Box retention above 92% through algorithmic repricing.</li><li>Reduction in ACoS through negative keyword harvesting and dayparting.</li><li>Weekly executive reporting with clear gross-to-net margin visibility.</li></ul>',
-                'author_name' => 'OYL Legacy Strategy Team',
+                'content' => '<p>Managing an Amazon or multi-channel store requires rapid adaptation to algorithm shifts, compliance audits, PPC bidding wars, and inventory lead times. When brand owners assign a named Dedicated Account Manager, operations shift from reactive troubleshooting to proactive institutional growth.</p><h3>The Power of Single-Point Ownership</h3><p>At YL Legacy, every client is paired with an experienced Dedicated Account Manager who oversees daily operations, PPC architecture, and inventory forecasting. This structure ensures clear accountability, weekly strategic milestones, and rapid issue resolution.</p><ul><li>Consistent Buy Box retention above 92% through algorithmic repricing.</li><li>Reduction in ACoS through negative keyword harvesting and dayparting.</li><li>Weekly executive reporting with clear gross-to-net margin visibility.</li></ul>',
+                'author_name' => 'YL Legacy Strategy Team',
                 'is_published' => true,
                 'published_at' => now()->subDays(3),
             ],
@@ -219,7 +219,7 @@ class DatabaseSeeder extends Seeder
                 'category' => 'E-Commerce Growth',
                 'read_time' => '6 min read',
                 'excerpt' => 'A comprehensive breakdown of cost vs. return when partnering with a full-service turnkey e-commerce agency.',
-                'content' => '<p>Building an internal team with PPC managers, listing copywriters, graphic designers, and supply chain coordinators often exceeds $180,000 annually. Partnering with a turnkey agency like OYL Legacy provides immediate access to seasoned specialists at a fraction of the overhead.</p>',
+                'content' => '<p>Building an internal team with PPC managers, listing copywriters, graphic designers, and supply chain coordinators often exceeds $180,000 annually. Partnering with a turnkey agency like YL Legacy provides immediate access to seasoned specialists at a fraction of the overhead.</p>',
                 'author_name' => 'FBA Operations Director',
                 'is_published' => true,
                 'published_at' => now()->subDays(10),

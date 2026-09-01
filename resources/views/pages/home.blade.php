@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', \App\Models\SiteSetting::get('site_name', 'OYL Legacy') . ' - Turnkey E-Commerce Operations & Dedicated Account Management')
+@section('title', \App\Models\SiteSetting::get('site_name', 'YL Legacy') . ' - Turnkey E-Commerce Operations & Dedicated Account Management')
 
 @section('content')
 
@@ -20,7 +20,7 @@
                     <span class="gradient-text">Dedicated Account Director</span> on 100% Autopilot
                 </h1>
                 <p class="hero-subtitle">
-                    <strong>OYL Legacy</strong> provides turnkey e-commerce store operations, data-driven PPC marketing, inventory logistics, and dedicated single-point account management across Amazon FBA, Walmart Marketplace, eBay, and Shopify.
+                    <strong>YL Legacy</strong> provides turnkey e-commerce store operations, data-driven PPC marketing, inventory logistics, and dedicated single-point account management across Amazon FBA, Walmart Marketplace, eBay, and Shopify.
                 </p>
                 <div class="hero-actions">
                     <a href="{{ route('consultation') }}" class="btn btn-primary btn-lg">
@@ -42,7 +42,7 @@
                             <i class="fa-solid fa-star"></i>
                         </div>
                         <div class="rating-text">
-                            <strong>4.9 / 5.0 Rating</strong> <span>(1,250+ Verified Client Reviews • OYL Legacy)</span>
+                            <strong>4.9 / 5.0 Rating</strong> <span>(1,250+ Verified Client Reviews • YL Legacy)</span>
                         </div>
                     </div>
                 </div>
@@ -378,7 +378,7 @@
         <div class="section-header">
             <div class="badge badge-primary">Client Success Stories</div>
             <h2>Trusted by High-Performing E-Commerce Investors Globally</h2>
-            <p>Read real experiences from partners who scaled their marketplace digital assets with OYL Legacy.</p>
+            <p>Read real experiences from partners who scaled their marketplace digital assets with YL Legacy.</p>
         </div>
 
         <div class="testimonials-grid">
@@ -400,7 +400,7 @@
                 <div class="testimonial-stars">
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
-                <p class="testimonial-text">"The Walmart WFS onboarding process was completely seamless. OYL Legacy handled seller registration, cataloging, and inventory routing without any delay."</p>
+                <p class="testimonial-text">"The Walmart WFS onboarding process was completely seamless. YL Legacy handled seller registration, cataloging, and inventory routing without any delay."</p>
                 <div class="testimonial-user">
                     <div class="user-avatar">SC</div>
                     <div class="user-info">
@@ -434,7 +434,7 @@
     <div class="container">
         <div class="section-header">
             <div class="badge badge-primary">Underwriting & Compliance Transparency</div>
-            <h2>Frequently Asked Questions About OYL Legacy Services</h2>
+            <h2>Frequently Asked Questions About YL Legacy Services</h2>
             <p>Everything you need to know about our dedicated account management, fees, security, and onboarding.</p>
         </div>
 
@@ -445,7 +445,7 @@
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Every OYL Legacy client is assigned a named, senior Dedicated Account Director. Your director serves as your single point of operational contact, conducting weekly strategy calls, managing PPC ad spend, optimizing Buy Box share, and monitoring 24/7 store health.</p>
+                    <p>Every YL Legacy client is assigned a named, senior Dedicated Account Director. Your director serves as your single point of operational contact, conducting weekly strategy calls, managing PPC ad spend, optimizing Buy Box share, and monitoring 24/7 store health.</p>
                 </div>
             </div>
 

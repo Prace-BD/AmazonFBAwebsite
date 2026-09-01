@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Refund, Return & Cancellation Policy - ' . \App\Models\SiteSetting::get('site_name', 'OYL Legacy'))
+@section('title', 'Refund, Return & Cancellation Policy - ' . \App\Models\SiteSetting::get('site_name', 'YL Legacy'))
 
 @section('content')
 <section class="section-padding" style="background: #ffffff;">
@@ -8,12 +8,12 @@
         <div class="section-header" style="text-align: left; margin-bottom: 30px;">
             <div class="badge badge-primary">Compliance & Consumer Protection</div>
             <h2>Refund, Return & Cancellation Policy</h2>
-            <p>Last updated: {{ date('F Y') }} • Governing Entity: <strong>OYL Legacy LLC</strong></p>
+            <p>Last updated: {{ date('F Y') }} • Governing Entity: <strong>YL Legacy LLC</strong></p>
         </div>
 
         <div style="font-size: 15px; color: var(--text-muted); line-height: 1.8;">
             <p style="margin-bottom: 20px;">
-                At <strong>OYL Legacy LLC</strong> ("we," "us," or "our"), customer satisfaction, transparency, and high-standard service delivery are foundational. This Refund, Return & Cancellation Policy explains your rights and procedures regarding service cancellations and refund requests.
+                At <strong>YL Legacy LLC</strong> ("we," "us," or "our"), customer satisfaction, transparency, and high-standard service delivery are foundational. This Refund, Return & Cancellation Policy explains your rights and procedures regarding service cancellations and refund requests.
             </p>
 
             <h3 style="color: var(--accent); font-size: 19px; margin: 28px 0 12px;">1. Service Onboarding & 30-Day Satisfaction Window</h3>
@@ -36,7 +36,7 @@
                 Clients on recurring monthly management agreements may cancel at any time with a <strong>14-day written notice</strong> prior to the next billing cycle. To cancel:
             </p>
             <ol style="margin-left: 20px; margin-bottom: 20px; list-style-type: decimal;">
-                <li style="margin-bottom: 8px;">Submit a formal cancellation notice by emailing <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}" style="color: var(--primary); font-weight: 600;">{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}</a> or contacting your Dedicated Account Manager.</li>
+                <li style="margin-bottom: 8px;">Submit a formal cancellation notice by emailing <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}" style="color: var(--primary); font-weight: 600;">{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}</a> or contacting your Dedicated Account Manager.</li>
                 <li style="margin-bottom: 8px;">Our billing desk will confirm receipt and ensure all current reporting deliverables and access credentials are fully transferred to you.</li>
                 <li style="margin-bottom: 8px;">No subsequent monthly management charges will occur following the cancellation date.</li>
             </ol>
@@ -51,8 +51,8 @@
                 For any questions regarding billing, invoices, or cancellations, please reach our dedicated support desk at:
             </p>
             <div style="background: var(--surface-alt); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
-                <p style="margin-bottom: 6px;"><strong>OYL Legacy LLC • Customer Support Desk</strong></p>
-                <p style="margin-bottom: 6px;">Email: <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}" style="color: var(--primary);">{{ \App\Models\SiteSetting::get('contact_email', 'support@oyllegacy.com') }}</a></p>
+                <p style="margin-bottom: 6px;"><strong>YL Legacy LLC • Customer Support Desk</strong></p>
+                <p style="margin-bottom: 6px;">Email: <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}" style="color: var(--primary);">{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}</a></p>
                 <p style="margin-bottom: 6px;">Hotline: <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" style="color: var(--text-dark);">{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</a></p>
                 <p>Address: {{ \App\Models\SiteSetting::get('contact_address', '100 Enterprise Way, Suite 400, Wilmington, DE 19801, USA') }}</p>
             </div>

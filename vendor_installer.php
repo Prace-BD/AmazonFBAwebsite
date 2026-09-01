@@ -88,17 +88,20 @@ $_SERVER['COMPOSER_HOME'] = $composerHome;
         echo "<p class='status-ok'>✅ Application key is configured.</p>";
     }
 
-    // Step 2: Check Vendor Directory
+    // Step 2: Check Vendor Directory & Run Migration
     echo "<h3>2. Composer Dependencies & Database Migration</h3>";
     $vendorAutoload = __DIR__ . '/vendor/autoload.php';
 
     if (file_exists($vendorAutoload)) {
         echo "<p class='status-ok'>🎉 <code>vendor/autoload.php</code> is installed and ready!</p>";
         
-        // Boot Laravel Framework to execute migrations & seeders safely
+        // Boot Laravel Console Kernel
         try {
             require_once $vendorAutoload;
             $app = require_once __DIR__ . '/bootstrap/app.php';
+            
+            $kernel = $app->make(\Illuminate\Contracts\Console\Kernel::class);
+            $kernel->bootstrap();
             
             \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
             $migOut = \Illuminate\Support\Facades\Artisan::output();
@@ -150,7 +153,7 @@ $_SERVER['COMPOSER_HOME'] = $composerHome;
                 if (file_exists($vendorAutoload)) {
                     $installed = true;
                     echo "<h3 class='status-ok'>🎉 Composer Installation Successful! Refreshing page to migrate database...</h3>";
-                    echo "<script>setTimeout(function(){ window.location.reload(); }, 2000);</script>";
+                    echo "<script>setTimeout(function(){ window.location.reload(); }, 1000);</script>";
                 }
             }
         }

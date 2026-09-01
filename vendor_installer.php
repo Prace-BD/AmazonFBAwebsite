@@ -4,9 +4,13 @@
  * Safe for Shared Hosting / cPanel environments without SSH access.
  */
 ini_set('display_errors', 1);
+ini_set('register_argc_argv', '0');
 ini_set('memory_limit', '512M');
 error_reporting(E_ALL);
 set_time_limit(600);
+
+putenv('COMPOSER_ALLOW_SUPERUSER=1');
+putenv('COMPOSER_NO_INTERACTION=1');
 
 ?>
 <!DOCTYPE html>
@@ -41,10 +45,21 @@ set_time_limit(600);
             copy($envExamplePath, $envPath);
             echo "<p class='status-ok'>✅ Created <code>.env</code> file from <code>.env.example</code>.</p>";
         } else {
-            echo "<p class='status-err'>❌ <code>.env.example</code> missing!</p>";
+            // Embedded default .env template
+            $defaultEnv = "APP_NAME=\"YL Legacy\"\nAPP_ENV=production\nAPP_KEY=\nAPP_DEBUG=false\nAPP_URL=https://yllegacy.com\n\nDB_CONNECTION=sqlite\nDB_DATABASE=" . __DIR__ . "/database/database.sqlite\n\nSESSION_DRIVER=file\nCACHE_STORE=file\nQUEUE_CONNECTION=sync\n";
+            file_put_contents($envPath, $defaultEnv);
+            echo "<p class='status-ok'>✅ Created standard <code>.env</code> file.</p>";
         }
     } else {
         echo "<p class='status-ok'>✅ <code>.env</code> file exists.</p>";
+    }
+
+    // Ensure database.sqlite exists if using sqlite
+    $dbPath = __DIR__ . '/database/database.sqlite';
+    if (!file_exists($dbPath)) {
+        @mkdir(__DIR__ . '/database', 0755, true);
+        @touch($dbPath);
+        echo "<p class='status-ok'>✅ Created SQLite database at <code>database/database.sqlite</code>.</p>";
     }
 
     // Generate APP_KEY if missing
@@ -70,7 +85,7 @@ set_time_limit(600);
         echo "<p class='status-ok'>🎉 <code>vendor/autoload.php</code> is installed and ready!</p>";
         echo "<a href='/deploy/install?secret=yllegacy2026' class='btn btn-green'>Proceed to Database Migration & Setup →</a>";
     } else {
-        echo "<p>⏳ <code>vendor/</code> directory not found. Attempting web-based composer download and installation...</p>";
+        echo "<p>⏳ <code>vendor/</code> directory not found. Attempting web-based composer installation...</p>";
 
         $pharPath = __DIR__ . '/composer.phar';
         if (!file_exists($pharPath)) {
@@ -85,11 +100,11 @@ set_time_limit(600);
         }
 
         if (file_exists($pharPath)) {
-            echo "<p>Running Composer installation (this may take up to 60 seconds)...</p>";
-            putenv('COMPOSER_HOME=' . __DIR__ . '/.composer');
+            echo "<p>Running Composer installation (with <code>register_argc_argv=0</code> bypass)...</p>";
             
             $phpBin = PHP_BINARY ? PHP_BINARY : 'php';
-            $cmd = escapeshellcmd($phpBin) . ' ' . escapeshellarg($pharPath) . ' install --no-dev --optimize-autoloader 2>&1';
+            // -d register_argc_argv=0 bypasses the non-CLI SAPI check in Composer
+            $cmd = escapeshellcmd($phpBin) . ' -d register_argc_argv=0 ' . escapeshellarg($pharPath) . ' install --no-dev --optimize-autoloader 2>&1';
             
             $output = [];
             $returnCode = -1;
@@ -98,10 +113,22 @@ set_time_limit(600);
             echo "<pre>" . htmlspecialchars(implode("\n", $output)) . "</pre>";
 
             if (file_exists($vendorAutoload)) {
-                echo "<h3 class='status-ok'>🎉 Installation Successful!</h3>";
+                echo "<h3 class='status-ok'>🎉 Composer Installation Successful!</h3>";
                 echo "<a href='/deploy/install?secret=yllegacy2026' class='btn btn-green'>Proceed to Database Migration & Setup →</a>";
             } else {
-                echo "<p class='status-err'>⚠️ Automated exec installation returned code $returnCode.</p>";
+                echo "<p class='status-err'>⚠️ Automated composer execution finished with code $returnCode.</p>";
+                echo "<p>Retrying using alternative CLI PHP binary...</p>";
+                
+                // Fallback attempt with system php CLI path
+                $altCmd = '/usr/local/bin/php -d register_argc_argv=0 ' . escapeshellarg($pharPath) . ' install --no-dev --optimize-autoloader 2>&1';
+                $altOutput = [];
+                @exec($altCmd, $altOutput, $altReturn);
+                echo "<pre>" . htmlspecialchars(implode("\n", $altOutput)) . "</pre>";
+
+                if (file_exists($vendorAutoload)) {
+                    echo "<h3 class='status-ok'>🎉 Composer Installation Successful!</h3>";
+                    echo "<a href='/deploy/install?secret=yllegacy2026' class='btn btn-green'>Proceed to Database Migration & Setup →</a>";
+                }
             }
         }
     }

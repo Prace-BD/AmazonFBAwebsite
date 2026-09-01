@@ -5,6 +5,15 @@
 
     RewriteEngine On
 
+    # Block access to hidden files (.env, .git, etc.)
+    RewriteRule ^\.(?!well-known).* - [F,L]
+
+    # Block sensitive root files
+    RewriteRule ^(composer\.(json|lock)|package(-lock)?\.json|artisan(\.bat)?|phpunit\.xml|\.env.*) - [F,L]
+
+    # Block direct web access to internal Laravel directories
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests)/ - [F,L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -34,3 +43,4 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+

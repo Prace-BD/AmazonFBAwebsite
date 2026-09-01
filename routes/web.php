@@ -69,3 +69,22 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/leads/{lead}/status', [AdminThemeController::class, 'updateLeadStatus'])->name('leads.status');
     Route::delete('/leads/{lead}', [AdminThemeController::class, 'destroyLead'])->name('leads.destroy');
 });
+
+// One-Click Web Database Migration & Cache Setup for cPanel / Shared Hosting
+Route::get('/deploy/install', function (\Illuminate\Http\Request $request) {
+    if ($request->query('secret') !== 'yllegacy2026') {
+        abort(403, 'Unauthorized setup access.');
+    }
+
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--seed' => true, '--force' => true]);
+        $migrateOutput = \Illuminate\Support\Facades\Artisan::output();
+
+        \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+        $optimizeOutput = \Illuminate\Support\Facades\Artisan::output();
+
+        return response("<h2>✅ YL Legacy Database & Theme Setup Complete!</h2><pre style='background:#1e293b;color:#f8fafc;padding:20px;border-radius:8px;'><strong>Migrations & Seed:</strong>\n" . htmlspecialchars($migrateOutput) . "\n\n<strong>Cache Cleared:</strong>\n" . htmlspecialchars($optimizeOutput) . "</pre><p><a href='/admin' style='display:inline-block;background:#f88902;color:#fff;padding:10px 20px;text-decoration:none;border-radius:6px;font-weight:bold;'>Go to Admin Login →</a></p>");
+    } catch (\Throwable $e) {
+        return response("<h2>❌ Setup Error:</h2><pre style='background:#fee2e2;color:#991b1b;padding:20px;border-radius:8px;'>" . htmlspecialchars($e->getMessage()) . "\n\n" . htmlspecialchars($e->getTraceAsString()) . "</pre>", 500);
+    }
+});

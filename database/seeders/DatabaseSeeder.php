@@ -47,10 +47,10 @@ class DatabaseSeeder extends Seeder
             ['key' => 'theme_card_radius', 'value' => '14px', 'group' => 'theme', 'type' => 'text', 'label' => 'Card Border Radius'],
             
             // Contact & Hotline
-            ['key' => 'contact_phone', 'value' => '+1 (888) 695-0199', 'group' => 'contact', 'type' => 'text', 'label' => 'Phone Hotline'],
-            ['key' => 'contact_phone_raw', 'value' => '18886950199', 'group' => 'contact', 'type' => 'text', 'label' => 'Phone Dial Number'],
+            ['key' => 'contact_phone', 'value' => '+1 (754) 279-0226', 'group' => 'contact', 'type' => 'text', 'label' => 'Phone Hotline'],
+            ['key' => 'contact_phone_raw', 'value' => '17542790226', 'group' => 'contact', 'type' => 'text', 'label' => 'Phone Dial Number'],
             ['key' => 'contact_email', 'value' => 'support@yllegacy.com', 'group' => 'contact', 'type' => 'text', 'label' => 'Contact Email'],
-            ['key' => 'contact_whatsapp', 'value' => '+18886950199', 'group' => 'contact', 'type' => 'text', 'label' => 'WhatsApp Number'],
+            ['key' => 'contact_whatsapp', 'value' => '+17542790226', 'group' => 'contact', 'type' => 'text', 'label' => 'WhatsApp Number'],
             ['key' => 'contact_address', 'value' => '100 Enterprise Way, Suite 400, Wilmington, DE 19801, USA', 'group' => 'contact', 'type' => 'text', 'label' => 'Office Address'],
             ['key' => 'contact_hours', 'value' => 'Monday - Friday: 8:00 AM - 8:00 PM EST (24/7 Monitoring)', 'group' => 'contact', 'type' => 'text', 'label' => 'Working Hours'],
             

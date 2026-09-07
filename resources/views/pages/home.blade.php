@@ -27,9 +27,9 @@
                         <i class="fa-solid fa-rocket"></i>
                         <span>Get Your Dedicated Manager</span>
                     </a>
-                    <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" class="btn btn-outline btn-lg">
+                    <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" class="btn btn-outline btn-lg">
                         <i class="fa-solid fa-phone" style="color: var(--primary);"></i>
-                        <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</span>
+                        <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}</span>
                     </a>
                 </div>
                 <div class="hero-trust-bar">
@@ -308,7 +308,7 @@
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
                         <div style="text-align: center; font-size: 12.5px; color: var(--text-muted);">
-                            <i class="fa-solid fa-phone" style="color: var(--primary);"></i> Hotline: <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" style="color: var(--text-dark); font-weight: 600;">{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</a>
+                            <i class="fa-solid fa-phone" style="color: var(--primary);"></i> Hotline: <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" style="color: var(--text-dark); font-weight: 600;">{{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}</a>
                         </div>
                     </div>
                 </div>
@@ -526,9 +526,9 @@
                     <i class="fa-solid fa-calendar-check"></i>
                     <span>Schedule Strategy Call</span>
                 </a>
-                <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" class="btn btn-white btn-lg">
+                <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" class="btn btn-white btn-lg">
                     <i class="fa-solid fa-phone" style="color: var(--primary);"></i>
-                    <span>Call Hotline: {{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</span>
+                    <span>Call Hotline: {{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}</span>
                 </a>
             </div>
         </div>

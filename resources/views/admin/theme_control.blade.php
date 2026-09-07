@@ -321,17 +321,17 @@
                             <div class="setting-desc">Human-readable phone format shown on header & buttons</div>
                         </div>
                         <div>
-                            <input type="text" name="contact_phone" value="{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}" class="form-control">
+                            <input type="text" name="contact_phone" value="{{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}" class="form-control">
                         </div>
                     </div>
 
                     <div class="setting-row">
                         <div>
                             <div class="setting-label">Hotline Dial Number</div>
-                            <div class="setting-desc">Raw digits for tel: links (e.g. 18886950199)</div>
+                            <div class="setting-desc">Raw digits for tel: links (e.g. 17542790226)</div>
                         </div>
                         <div>
-                            <input type="text" name="contact_phone_raw" value="{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" class="form-control">
+                            <input type="text" name="contact_phone_raw" value="{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" class="form-control">
                         </div>
                     </div>
 

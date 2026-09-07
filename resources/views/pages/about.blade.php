@@ -28,9 +28,9 @@
                         <i class="fa-solid fa-user-shield"></i>
                         <span>Get Dedicated Manager</span>
                     </a>
-                    <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" class="btn btn-outline">
+                    <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" class="btn btn-outline">
                         <i class="fa-solid fa-phone" style="color: var(--primary);"></i>
-                        <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</span>
+                        <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}</span>
                     </a>
                 </div>
             </div>

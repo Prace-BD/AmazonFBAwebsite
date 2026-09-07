@@ -46,9 +46,9 @@
                     <span>{{ \App\Models\SiteSetting::get('topbar_announcement', '⚡ Institutional E-Commerce Management & Dedicated Account Directors') }}</span>
                 </div>
                 <div class="topbar-contact-items">
-                    <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" class="topbar-link">
+                    <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" class="topbar-link">
                         <i class="fa-solid fa-phone"></i>
-                        <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</span>
+                        <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}</span>
                     </a>
                     <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}" class="topbar-link">
                         <i class="fa-solid fa-envelope"></i>
@@ -137,9 +137,9 @@
 
                 <!-- Actions / Phone CTA -->
                 <div class="nav-actions">
-                    <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" class="phone-quick-btn">
+                    <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" class="phone-quick-btn">
                         <i class="fa-solid fa-phone"></i>
-                        <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</span>
+                        <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}</span>
                     </a>
                     <a href="{{ route('consultation') }}" class="btn btn-primary btn-sm">
                         <span>{{ \App\Models\SiteSetting::get('header_cta_text', 'Get Dedicated Manager') }}</span>
@@ -248,7 +248,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fa-solid fa-phone"></i>
-                        <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}">{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</a>
+                        <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}">{{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}</a>
                     </div>
                     <div class="footer-contact-item">
                         <i class="fa-solid fa-envelope"></i>
@@ -311,9 +311,9 @@
             @endauth
         </div>
         <div style="margin-top: auto;">
-            <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">
+            <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">
                 <i class="fa-solid fa-phone" style="color: var(--primary);"></i>
-                <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</span>
+                <span>{{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}</span>
             </a>
             <a href="{{ route('consultation') }}" class="btn btn-primary" style="width: 100%;">
                 <span>Get Dedicated Manager</span>

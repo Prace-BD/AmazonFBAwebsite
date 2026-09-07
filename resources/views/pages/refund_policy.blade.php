@@ -53,7 +53,7 @@
             <div style="background: var(--surface-alt); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
                 <p style="margin-bottom: 6px;"><strong>YL Legacy LLC • Customer Support Desk</strong></p>
                 <p style="margin-bottom: 6px;">Email: <a href="mailto:{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}" style="color: var(--primary);">{{ \App\Models\SiteSetting::get('contact_email', 'support@yllegacy.com') }}</a></p>
-                <p style="margin-bottom: 6px;">Hotline: <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" style="color: var(--text-dark);">{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</a></p>
+                <p style="margin-bottom: 6px;">Hotline: <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" style="color: var(--text-dark);">{{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}</a></p>
                 <p>Address: {{ \App\Models\SiteSetting::get('contact_address', '100 Enterprise Way, Suite 400, Wilmington, DE 19801, USA') }}</p>
             </div>
         </div>

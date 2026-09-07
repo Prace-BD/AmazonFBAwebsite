@@ -27,7 +27,7 @@
                     </div>
                     <div>
                         <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Hotline Call</div>
-                        <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '18886950199') }}" style="font-size: 16px; font-weight: 700; color: var(--accent);">{{ \App\Models\SiteSetting::get('contact_phone', '+1 (888) 695-0199') }}</a>
+                        <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" style="font-size: 16px; font-weight: 700; color: var(--accent);">{{ \App\Models\SiteSetting::get('contact_phone', '+1 (754) 279-0226') }}</a>
                     </div>
                 </div>
 

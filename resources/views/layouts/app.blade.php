@@ -187,20 +187,6 @@
                     <p style="color: #94a3b8; font-size: 13.5px; line-height: 1.6; margin-bottom: 20px;">
                         {{ \App\Models\SiteSetting::get('footer_about_text', 'YL Legacy is a premier turnkey e-commerce operations and dedicated account management agency providing store scaling across Amazon FBA, Walmart WFS, eBay, and Shopify.') }}
                     </p>
-                    <div class="footer-social-links">
-                        @if(\App\Models\SiteSetting::get('social_facebook'))
-                            <a href="{{ \App\Models\SiteSetting::get('social_facebook') }}" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        @endif
-                        @if(\App\Models\SiteSetting::get('social_instagram'))
-                            <a href="{{ \App\Models\SiteSetting::get('social_instagram') }}" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        @endif
-                        @if(\App\Models\SiteSetting::get('social_linkedin'))
-                            <a href="{{ \App\Models\SiteSetting::get('social_linkedin') }}" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        @endif
-                        @if(\App\Models\SiteSetting::get('social_twitter'))
-                            <a href="{{ \App\Models\SiteSetting::get('social_twitter') }}" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                        @endif
-                    </div>
                 </div>
 
                 <!-- Col 2: Services -->

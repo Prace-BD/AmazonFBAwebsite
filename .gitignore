@@ -26,4 +26,7 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 *.zip
+composer.phar
+scratch/zip_contents/
+database/database.sqlite
 

@@ -17,7 +17,7 @@
                 </div>
                 <h1>
                     Scale Your E-Commerce Store with a <br>
-                    <span class="gradient-text">Dedicated Account Director</span> on 100% Autopilot
+                    <span class="gradient-text">Dedicated Account Director</span> for End-to-End E-commerce Store Management
                 </h1>
                 <p class="hero-subtitle">
                     <strong>YL Legacy</strong> provides turnkey e-commerce store operations, data-driven PPC marketing, inventory logistics, and dedicated single-point account management across Amazon FBA, Walmart Marketplace, eBay, and Shopify.
@@ -165,9 +165,9 @@
                 <div>
                     <div class="service-card-icon"><i class="fa-solid fa-store"></i></div>
                     <h3>Walmart Marketplace WFS</h3>
-                    <p>Establish high-margin dropshipping and WFS store operations on Walmart Marketplace with guaranteed approval assistance.</p>
+                    <p>Establish high-margin dropshipping and WFS store operations on Walmart Marketplace.</p>
                     <ul class="service-card-perks">
-                        <li><i class="fa-solid fa-check-circle"></i> Corporate application & marketplace clearance</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Marketplace Account Setup & Support</li>
                         <li><i class="fa-solid fa-check-circle"></i> WFS 2-day delivery badge onboarding</li>
                         <li><i class="fa-solid fa-check-circle"></i> Automated catalog indexing & price optimization</li>
                     </ul>
@@ -204,10 +204,10 @@
             <div class="service-card">
                 <div>
                     <div class="service-card-icon"><i class="fa-brands fa-ebay"></i></div>
-                    <h3>eBay Multi-Account Automation</h3>
+                    <h3>eBay Store Management & Automation</h3>
                     <p>Scale multi-account eBay stores across global markets with 1,000+ optimized listings and automated shipping pipelines.</p>
                     <ul class="service-card-perks">
-                        <li><i class="fa-solid fa-check-circle"></i> Multi-tier eBay seller account setup</li>
+                        <li><i class="fa-solid fa-check-circle"></i> eBay Seller Account Setup & Management</li>
                         <li><i class="fa-solid fa-check-circle"></i> Top Rated Seller status maintenance</li>
                         <li><i class="fa-solid fa-check-circle"></i> 24/7 buyer messaging & dispute resolution</li>
                     </ul>

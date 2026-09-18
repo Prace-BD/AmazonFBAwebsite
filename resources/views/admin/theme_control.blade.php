@@ -345,13 +345,36 @@
                         </div>
                     </div>
 
-                    <div class="setting-row">
+                    <div class="setting-row" style="align-items: flex-start;">
                         <div>
                             <div class="setting-label">Operating Headquarters Address</div>
-                            <div class="setting-desc">Address shown on contact page and footer</div>
+                            <div class="setting-desc">Individual fields for precise multiline formatting (Street 1, Street 2, City, State Zip, Country)</div>
                         </div>
-                        <div>
-                            <input type="text" name="contact_address" value="{{ \App\Models\SiteSetting::get('contact_address', '100 Enterprise Way, Suite 400, Wilmington, DE 19801, USA') }}" class="form-control">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 500px;">
+                            <div style="grid-column: span 2;">
+                                <label style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 4px;">Street Address (Line 1)</label>
+                                <input type="text" name="contact_street1" value="{{ \App\Models\SiteSetting::get('contact_street1', '7901 4th St N') }}" class="form-control" placeholder="e.g. 7901 4th St N">
+                            </div>
+                            <div style="grid-column: span 2;">
+                                <label style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 4px;">Street Address (Line 2 / Suite)</label>
+                                <input type="text" name="contact_street2" value="{{ \App\Models\SiteSetting::get('contact_street2', 'Suite 300') }}" class="form-control" placeholder="e.g. Suite 300">
+                            </div>
+                            <div>
+                                <label style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 4px;">City</label>
+                                <input type="text" name="contact_city" value="{{ \App\Models\SiteSetting::get('contact_city', 'St. Petersburg') }}" class="form-control" placeholder="e.g. St. Petersburg">
+                            </div>
+                            <div>
+                                <label style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 4px;">State / Province</label>
+                                <input type="text" name="contact_state" value="{{ \App\Models\SiteSetting::get('contact_state', 'FL') }}" class="form-control" placeholder="e.g. FL">
+                            </div>
+                            <div>
+                                <label style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 4px;">Zip / Postal Code</label>
+                                <input type="text" name="contact_zip" value="{{ \App\Models\SiteSetting::get('contact_zip', '33702') }}" class="form-control" placeholder="e.g. 33702">
+                            </div>
+                            <div>
+                                <label style="font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 4px;">Country</label>
+                                <input type="text" name="contact_country" value="{{ \App\Models\SiteSetting::get('contact_country', 'USA') }}" class="form-control" placeholder="e.g. USA">
+                            </div>
                         </div>
                     </div>
 

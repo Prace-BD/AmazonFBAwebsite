@@ -67,4 +67,74 @@ class SiteSetting extends Model
     {
         Cache::forget('site_settings_all');
     }
+
+    /**
+     * Get multi-line HTML formatted office address
+     */
+    public static function getFormattedAddress(): string
+    {
+        $street1 = static::get('contact_street1');
+        $street2 = static::get('contact_street2');
+        $city = static::get('contact_city');
+        $state = static::get('contact_state');
+        $zip = static::get('contact_zip');
+        $country = static::get('contact_country');
+
+        if ($street1 || $city || $country) {
+            $lines = [];
+            if (!empty($street1)) {
+                $lines[] = e($street1);
+            }
+            if (!empty($street2)) {
+                $lines[] = e($street2);
+            }
+
+            $cityStateZipParts = [];
+            if (!empty($city)) {
+                $cityStateZipParts[] = !empty($state) ? e($city) . ',' : e($city);
+            }
+            if (!empty($state)) {
+                $cityStateZipParts[] = e($state);
+            }
+            if (!empty($zip)) {
+                $cityStateZipParts[] = e($zip);
+            }
+
+            if (!empty($cityStateZipParts)) {
+                $lines[] = implode(' ', $cityStateZipParts);
+            }
+
+            if (!empty($country)) {
+                $lines[] = e($country);
+            }
+
+            return implode('<br>', $lines);
+        }
+
+        // Fallback to legacy single contact_address if individual fields not defined yet
+        $legacy = static::get('contact_address', '7901 4th St N, Suite 300, St. Petersburg, FL 33702, USA');
+        return e($legacy);
+    }
+
+    /**
+     * Get single line formatted office address
+     */
+    public static function getSingleLineAddress(): string
+    {
+        $street1 = static::get('contact_street1');
+        $street2 = static::get('contact_street2');
+        $city = static::get('contact_city');
+        $state = static::get('contact_state');
+        $zip = static::get('contact_zip');
+        $country = static::get('contact_country');
+
+        if ($street1 || $city || $country) {
+            $cityState = trim(implode(', ', array_filter([$city, $state])));
+            $cityStateZip = trim(implode(' ', array_filter([$cityState, $zip])));
+            $parts = array_filter([$street1, $street2, $cityStateZip, $country]);
+            return implode(', ', $parts);
+        }
+
+        return static::get('contact_address', '7901 4th St N, Suite 300, St. Petersburg, FL 33702, USA');
+    }
 }

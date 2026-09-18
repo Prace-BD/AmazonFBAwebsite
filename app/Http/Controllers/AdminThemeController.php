@@ -57,6 +57,27 @@ class AdminThemeController extends Controller
             );
         }
 
+        if ($request->hasAny(['contact_street1', 'contact_city', 'contact_state'])) {
+            $street1 = $request->input('contact_street1', '');
+            $street2 = $request->input('contact_street2', '');
+            $city = $request->input('contact_city', '');
+            $state = $request->input('contact_state', '');
+            $zip = $request->input('contact_zip', '');
+            $country = $request->input('contact_country', '');
+
+            $cityState = trim(implode(', ', array_filter([$city, $state])));
+            $cityStateZip = trim(implode(' ', array_filter([$cityState, $zip])));
+            $parts = array_filter([$street1, $street2, $cityStateZip, $country]);
+            $combined = implode(', ', $parts);
+
+            if (!empty($combined)) {
+                SiteSetting::updateOrCreate(
+                    ['key' => 'contact_address'],
+                    ['value' => $combined]
+                );
+            }
+        }
+
         SiteSetting::clearCache();
 
         return redirect()->back()->with('success', 'Unified Theme Settings successfully updated! Global changes applied across all pages.');

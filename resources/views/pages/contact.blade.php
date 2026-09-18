@@ -41,13 +41,13 @@
                     </div>
                 </div>
 
-                <div class="footer-contact-item" style="color: var(--text-dark); margin-bottom: 20px;">
-                    <div style="width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;">
+                <div class="footer-contact-item" style="color: var(--text-dark); margin-bottom: 20px; align-items: flex-start;">
+                    <div style="width: 44px; height: 44px; border-radius: 10px; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; margin-top: 2px;">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
                     <div>
                         <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Operating Headquarters</div>
-                        <div style="font-size: 14px; font-weight: 500; color: var(--text-dark);">{{ \App\Models\SiteSetting::get('contact_address', '100 Enterprise Way, Suite 400, Wilmington, DE 19801, USA') }}</div>
+                        <div style="font-size: 14px; font-weight: 500; color: var(--text-dark); line-height: 1.5;">{!! \App\Models\SiteSetting::getFormattedAddress() !!}</div>
                     </div>
                 </div>
 

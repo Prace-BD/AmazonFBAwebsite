@@ -37,7 +37,7 @@
             </p>
             <div style="background: var(--surface-alt); padding: 18px; border-radius: 8px; border: 1px solid var(--border-color);">
                 <strong>YL Legacy LLC • Legal Department</strong><br>
-                {{ \App\Models\SiteSetting::get('contact_address', '100 Enterprise Way, Suite 400, Wilmington, DE 19801, USA') }}
+                {!! \App\Models\SiteSetting::getFormattedAddress() !!}
             </div>
         </div>
     </div>

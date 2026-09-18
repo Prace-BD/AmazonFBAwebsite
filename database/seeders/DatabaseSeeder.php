@@ -51,7 +51,13 @@ class DatabaseSeeder extends Seeder
             ['key' => 'contact_phone_raw', 'value' => '17542790226', 'group' => 'contact', 'type' => 'text', 'label' => 'Phone Dial Number'],
             ['key' => 'contact_email', 'value' => 'support@yllegacy.com', 'group' => 'contact', 'type' => 'text', 'label' => 'Contact Email'],
             ['key' => 'contact_whatsapp', 'value' => '+17542790226', 'group' => 'contact', 'type' => 'text', 'label' => 'WhatsApp Number'],
-            ['key' => 'contact_address', 'value' => '100 Enterprise Way, Suite 400, Wilmington, DE 19801, USA', 'group' => 'contact', 'type' => 'text', 'label' => 'Office Address'],
+            ['key' => 'contact_street1', 'value' => '7901 4th St N', 'group' => 'contact', 'type' => 'text', 'label' => 'Street Address Line 1'],
+            ['key' => 'contact_street2', 'value' => 'Suite 300', 'group' => 'contact', 'type' => 'text', 'label' => 'Street Address Line 2'],
+            ['key' => 'contact_city', 'value' => 'St. Petersburg', 'group' => 'contact', 'type' => 'text', 'label' => 'City'],
+            ['key' => 'contact_state', 'value' => 'FL', 'group' => 'contact', 'type' => 'text', 'label' => 'State / Province'],
+            ['key' => 'contact_zip', 'value' => '33702', 'group' => 'contact', 'type' => 'text', 'label' => 'Zip / Postal Code'],
+            ['key' => 'contact_country', 'value' => 'USA', 'group' => 'contact', 'type' => 'text', 'label' => 'Country'],
+            ['key' => 'contact_address', 'value' => '7901 4th St N, Suite 300, St. Petersburg, FL 33702, USA', 'group' => 'contact', 'type' => 'text', 'label' => 'Office Address'],
             ['key' => 'contact_hours', 'value' => 'Monday - Friday: 8:00 AM - 8:00 PM EST (24/7 Monitoring)', 'group' => 'contact', 'type' => 'text', 'label' => 'Working Hours'],
             
             // Currency & Package Pricing Control

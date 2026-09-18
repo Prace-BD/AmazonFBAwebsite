@@ -228,9 +228,9 @@
                         <i class="fa-solid fa-building"></i>
                         <span>YL Legacy LLC</span>
                     </div>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>{{ \App\Models\SiteSetting::get('contact_address', '100 Enterprise Way, Suite 400, Wilmington, DE 19801, USA') }}</span>
+                    <div class="footer-contact-item" style="align-items: flex-start;">
+                        <i class="fa-solid fa-location-dot" style="margin-top: 4px;"></i>
+                        <span style="line-height: 1.5;">{!! \App\Models\SiteSetting::getFormattedAddress() !!}</span>
                     </div>
                     <div class="footer-contact-item">
                         <i class="fa-solid fa-phone"></i>

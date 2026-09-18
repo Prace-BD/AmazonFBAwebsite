@@ -70,6 +70,9 @@ class SiteSetting extends Model
 
     /**
      * Get multi-line HTML formatted office address
+     * Format:
+     * Line 1: Street1 Street2
+     * Line 2: City, State Zip, Country
      */
     public static function getFormattedAddress(): string
     {
@@ -82,37 +85,27 @@ class SiteSetting extends Model
 
         if ($street1 || $city || $country) {
             $lines = [];
-            if (!empty($street1)) {
-                $lines[] = e($street1);
-            }
-            if (!empty($street2)) {
-                $lines[] = e($street2);
+
+            // Line 1: Street1 Street2
+            $streetParts = array_filter([$street1, $street2]);
+            if (!empty($streetParts)) {
+                $lines[] = e(implode(' ', $streetParts));
             }
 
-            $cityStateZipParts = [];
-            if (!empty($city)) {
-                $cityStateZipParts[] = !empty($state) ? e($city) . ',' : e($city);
-            }
-            if (!empty($state)) {
-                $cityStateZipParts[] = e($state);
-            }
-            if (!empty($zip)) {
-                $cityStateZipParts[] = e($zip);
-            }
+            // Line 2: City, State Zip, Country
+            $cityState = trim(implode(', ', array_filter([$city, $state])));
+            $cityStateZip = trim(implode(' ', array_filter([$cityState, $zip])));
+            $cityStateZipCountry = trim(implode(', ', array_filter([$cityStateZip, $country])));
 
-            if (!empty($cityStateZipParts)) {
-                $lines[] = implode(' ', $cityStateZipParts);
-            }
-
-            if (!empty($country)) {
-                $lines[] = e($country);
+            if (!empty($cityStateZipCountry)) {
+                $lines[] = e($cityStateZipCountry);
             }
 
             return implode('<br>', $lines);
         }
 
         // Fallback to legacy single contact_address if individual fields not defined yet
-        $legacy = static::get('contact_address', '7901 4th St N, Suite 300, St. Petersburg, FL 33702, USA');
+        $legacy = static::get('contact_address', '7901 4th St N STE 300, St. Petersburg, FL 33702, USA');
         return e($legacy);
     }
 

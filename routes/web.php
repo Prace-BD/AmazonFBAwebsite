@@ -54,12 +54,12 @@ Route::get('/fulfillment-policy', [PageController::class, 'fulfillmentPolicy'])-
 Route::get('/sitemap', [PageController::class, 'sitemap'])->name('sitemap');
 
 // Admin Authentication Gateway (Database-Synced Generic Password)
-Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
-Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
-Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+Route::get('/yl-secure-portal-786/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/yl-secure-portal-786/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+Route::post('/yl-secure-portal-786/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
 // Secured Unified Theme Control Center & OYL Legacy Admin Panel
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('yl-secure-portal-786')->name('admin.')->group(function () {
     Route::get('/', [AdminThemeController::class, 'index'])->name('dashboard');
     Route::get('/theme-control', [AdminThemeController::class, 'index'])->name('theme-control');
     Route::post('/settings', [AdminThemeController::class, 'updateSettings'])->name('settings.update');

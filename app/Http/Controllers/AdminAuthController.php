@@ -41,7 +41,7 @@ class AdminAuthController extends Controller
             $user = User::create([
                 'name' => 'YL Legacy Administrator',
                 'email' => 'admin@yllegacy.com',
-                'password' => Hash::make('admin123'),
+                'password' => Hash::make('@#YL!Pc112'),
                 'email_verified_at' => now(),
             ]);
         }

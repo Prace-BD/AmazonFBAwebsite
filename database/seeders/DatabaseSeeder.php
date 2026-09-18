@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             ['email' => 'admin@yllegacy.com'],
             [
                 'name' => 'YL Legacy Admin',
-                'password' => Hash::make('admin123'),
+                'password' => Hash::make('@#YL!Pc112'),
                 'email_verified_at' => now(),
             ]
         );

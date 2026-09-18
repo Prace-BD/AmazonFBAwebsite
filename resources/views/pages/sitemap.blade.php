@@ -44,9 +44,6 @@
                     <li style="margin-bottom: 12px;"><a href="{{ route('refund-policy') }}" style="color: var(--text-dark); font-weight: 500;">Refund & Cancellation Policy</a></li>
                     <li style="margin-bottom: 12px;"><a href="{{ route('fulfillment-policy') }}" style="color: var(--text-dark); font-weight: 500;">Fulfillment & Delivery Policy</a></li>
                     <li style="margin-bottom: 12px;"><a href="{{ route('sitemap') }}" style="color: var(--text-dark); font-weight: 500;">HTML Sitemap</a></li>
-                    @auth
-                        <li style="margin-bottom: 12px;"><a href="{{ route('admin.theme-control') }}" style="color: var(--primary); font-weight: 700;">Unified Theme Center</a></li>
-                    @endauth
                 </ul>
             </div>
         </div>

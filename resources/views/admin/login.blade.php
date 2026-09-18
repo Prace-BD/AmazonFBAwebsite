@@ -12,8 +12,8 @@
                     <i class="fa-solid fa-lock"></i>
                 </div>
                 <div class="badge badge-primary" style="margin-bottom: 10px;">Security Gateway</div>
-                <h2 style="font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 6px;">Admin Control Center</h2>
-                <p style="font-size: 13.5px; color: var(--text-muted);">Enter your database credentials to access YL Legacy settings.</p>
+                <h2 style="font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 6px;">Portal Login</h2>
+                <p style="font-size: 13.5px; color: var(--text-muted);">Enter your credentials to access the management portal.</p>
             </div>
 
             @if(session('error'))
@@ -34,21 +34,15 @@
                 @csrf
                 
                 <div class="form-group">
-                    <label class="form-label" style="display: flex; justify-content: space-between;">
-                        <span>Admin Email</span>
-                        <span style="font-size: 11px; color: var(--text-muted);">Default: admin@yllegacy.com</span>
-                    </label>
+                    <label class="form-label">Email Address</label>
                     <div style="position: relative;">
-                        <input type="email" name="email" class="form-control" value="{{ old('email', 'admin@yllegacy.com') }}" required style="padding-left: 38px;">
+                        <input type="email" name="email" class="form-control" value="{{ old('email') }}" placeholder="name@company.com" required style="padding-left: 38px;">
                         <i class="fa-solid fa-envelope" style="position: absolute; left: 14px; top: 14px; color: var(--text-muted); font-size: 14px;"></i>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" style="display: flex; justify-content: space-between;">
-                        <span>Admin Password</span>
-                        <span style="font-size: 11px; color: var(--primary); font-weight: 600;">Default: admin123</span>
-                    </label>
+                    <label class="form-label">Password</label>
                     <div style="position: relative;">
                         <input type="password" id="adminPassword" name="password" class="form-control" placeholder="••••••••" required style="padding-left: 38px; padding-right: 38px;">
                         <i class="fa-solid fa-key" style="position: absolute; left: 14px; top: 14px; color: var(--text-muted); font-size: 14px;"></i>

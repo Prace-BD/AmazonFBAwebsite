@@ -215,9 +215,6 @@
                         <li><a href="{{ route('refund-policy') }}">Refund & Cancellation Policy</a></li>
                         <li><a href="{{ route('fulfillment-policy') }}">Fulfillment & Delivery Policy</a></li>
                         <li><a href="{{ route('sitemap') }}">HTML Sitemap</a></li>
-                        @auth
-                            <li><a href="{{ route('admin.theme-control') }}" style="color: var(--primary); font-weight: 600;"><i class="fa-solid fa-sliders" style="margin-right: 5px;"></i> Unified Theme Center</a></li>
-                        @endauth
                     </ul>
                 </div>
 
@@ -258,9 +255,6 @@
                     <a href="{{ route('refund-policy') }}">Refund Policy</a>
                     <a href="{{ route('fulfillment-policy') }}">Fulfillment Policy</a>
                     <a href="{{ route('sitemap') }}">Sitemap</a>
-                    @auth
-                        <a href="{{ route('admin.theme-control') }}" style="color: var(--primary);"><i class="fa-solid fa-lock"></i> Admin Panel</a>
-                    @endauth
                 </div>
             </div>
         </div>
@@ -292,9 +286,6 @@
             <a href="{{ route('fulfillment-policy') }}" class="mobile-nav-link">Fulfillment Policy</a>
             <a href="{{ route('contact') }}" class="mobile-nav-link">Contact Us</a>
             <a href="{{ route('blog.index') }}" class="mobile-nav-link">Blog & Insights</a>
-            @auth
-                <a href="{{ route('admin.theme-control') }}" class="mobile-nav-link" style="color: var(--primary);"><i class="fa-solid fa-sliders"></i> Unified Theme Center</a>
-            @endauth
         </div>
         <div style="margin-top: auto;">
             <a href="tel:{{ \App\Models\SiteSetting::get('contact_phone_raw', '17542790226') }}" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">
